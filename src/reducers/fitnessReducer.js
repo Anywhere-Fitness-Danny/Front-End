@@ -156,7 +156,6 @@ export const fitnessReducer = (state = initialState, action) => {
         isFetching: true
       };
     case SIGNUP_SUCCESS:
-      console.log("reducer signup:", action.payload)
       return {
         ...state,
         user: {
