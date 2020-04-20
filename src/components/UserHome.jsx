@@ -31,6 +31,11 @@ const UserHome = props => {
   const classes = useSelector(state => state.classes);
   const userClasses = useSelector(state => state.user.classes);
 
+  // Get all classes on mount, store in state
+  useEffect(() => {
+    dispatch(getClasses());
+  }, [dispatch]);
+
   // Get user's classes they're signed up for, store in state
   useEffect(() => {
     dispatch(getUserClasses(classes));
