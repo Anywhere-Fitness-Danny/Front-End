@@ -31,7 +31,6 @@ export const Register = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("clicking submit")
     dispatch(
       register(
         {
@@ -112,6 +111,7 @@ export const Register = props => {
           <div className="form-group">
             <label htmlFor="role">Register As: </label>
             <select onChange={handleChange} name="role">
+              <option>-- Select --</option>
               <option value={1}>Client</option>
               <option value={2}>Instructor</option>
             </select>
