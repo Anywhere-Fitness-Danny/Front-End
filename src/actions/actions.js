@@ -34,9 +34,10 @@ import {
   password*
 */
 export const login = (user, history) => dispatch => {
+  const apiURL = process.env.REACT_APP_API_URI.concat("/api/auth/login");
   dispatch({ type: LOGIN_START });
   axios
-    .post("https://lambda-anywhere-fitness.herokuapp.com/api/auth/login", user)
+    .post(apiURL, user)
     .then(res => {
       // Store the token in local storage
       localStorage.setItem("token", res.data.token);
@@ -65,9 +66,11 @@ export const logout = () => dispatch => {
   roleId*
 */
 export const register = (newUser, history) => dispatch => {
+  console.log(process.env)
+  const apiURL = process.env.REACT_APP_API_URI.concat("/api/auth/register");
   dispatch({ type: REGISTER_START });
   axios
-    .post("https://lambda-anywhere-fitness.herokuapp.com/api/auth/register", newUser)
+    .post(apiURL, newUser)
     .then(res => {
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
       dispatch(login({username: newUser.username, password: newUser.password}, history));
